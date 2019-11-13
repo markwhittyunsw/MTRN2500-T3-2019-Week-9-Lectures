@@ -17,8 +17,8 @@ public:
 	//void Draw();
 
 	// Try one of the two lines below at a time and inspect the output in detail
-	//virtual ~A();
-	~A();
+	virtual ~A();
+	//~A();
 	// The virtual destructor will force the resources to be destroyed in a proper order
 	// when you delete a base class pointer pointing to a derived class object.
 };
@@ -83,25 +83,40 @@ C::~C()
 
 int main()
 {
-	A *APtr = NULL;  // Change the type of this pointer to see different effects
-
+	B *APtr0 = nullptr;  // Change the type of this pointer to see different effects
+	B *APtr1 = nullptr;
+	B *APtr2 = nullptr;
 // Try one of these lines at a time and inspect the output
-	//APtr = new A;
-	//APtr = new B;
-	APtr = new C;
-	if(APtr == NULL)
+	APtr0 = new A;
+	APtr1 = new B;
+	APtr2 = new C;
+	if(APtr0 == nullptr)
+	{
+		cout << "Memory allocation failed " << endl;
+		return -1;
+	}
+	if(APtr1 == nullptr)
+	{
+		cout << "Memory allocation failed " << endl;
+		return -1;
+	}
+	if(APtr2 == nullptr)
 	{
 		cout << "Memory allocation failed " << endl;
 		return -1;
 	}
 
 	//Engine
-	APtr->Draw();
-
-	if(APtr != NULL)
-		delete APtr;
-
-	std::cin.get();
+	APtr0->Draw();
+	if(APtr0 != nullptr)
+		delete APtr0;
+	APtr1->Draw();
+	if(APtr1 != nullptr)
+		delete APtr1;
+	APtr2->Draw();
+	if(APtr2 != nullptr)
+		delete APtr2;
+	//std::cin.get();
 
 	return 0;
 }
