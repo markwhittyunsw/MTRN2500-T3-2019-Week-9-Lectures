@@ -1,5 +1,4 @@
 #include <iostream>
-#include <conio.h>
 
 using namespace std;
 
@@ -21,7 +20,7 @@ public:
 	//virtual ~A();
 	~A();
 	// The virtual destructor will force the resources to be destroyed in a proper order
-	// when you delte a base class pointer pointing to a derived class object.
+	// when you delete a base class pointer pointing to a derived class object.
 };
 void A::Draw()
 {
@@ -102,7 +101,8 @@ int main()
 	if(APtr != NULL)
 		delete APtr;
 
-	_getch();
+	std::cin.get();
+
 	return 0;
 }
 
