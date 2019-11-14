@@ -12,13 +12,13 @@ public:
 		cout << "An object of type A was created " << endl;
 	}
 	//Try one of these three lines at a time and inspect the output
-	virtual void Draw() = 0;//body cannot be defined/body definition ignored (pure function)
+	//virtual void Draw() = 0;//body cannot be defined/body definition ignored (pure function)
 	//virtual void Draw();
-	//void Draw();
+	void Draw();
 
 	// Try one of the two lines below at a time and inspect the output in detail
-	virtual ~A();
-	//~A();
+	//virtual ~A();
+	~A();
 	// The virtual destructor will force the resources to be destroyed in a proper order
 	// when you delete a base class pointer pointing to a derived class object.
 };
@@ -83,24 +83,12 @@ C::~C()
 
 int main()
 {
-	B *APtr0 = nullptr;  // Change the type of this pointer to see different effects
-	B *APtr1 = nullptr;
-	B *APtr2 = nullptr;
+	A *APtr0 = nullptr;  // Change the type of this pointer to see different effects
+
 // Try one of these lines at a time and inspect the output
-	APtr0 = new A;
-	APtr1 = new B;
-	APtr2 = new C;
+	APtr0 = new C;
+
 	if(APtr0 == nullptr)
-	{
-		cout << "Memory allocation failed " << endl;
-		return -1;
-	}
-	if(APtr1 == nullptr)
-	{
-		cout << "Memory allocation failed " << endl;
-		return -1;
-	}
-	if(APtr2 == nullptr)
 	{
 		cout << "Memory allocation failed " << endl;
 		return -1;
@@ -110,12 +98,7 @@ int main()
 	APtr0->Draw();
 	if(APtr0 != nullptr)
 		delete APtr0;
-	APtr1->Draw();
-	if(APtr1 != nullptr)
-		delete APtr1;
-	APtr2->Draw();
-	if(APtr2 != nullptr)
-		delete APtr2;
+
 	//std::cin.get();
 
 	return 0;
