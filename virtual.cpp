@@ -12,9 +12,9 @@ public:
 		cout << "An object of type A was created " << endl;
 	}
 	//Try one of these three lines at a time and inspect the output
-	//virtual void Draw() = 0;//body cannot be defined/body definition ignored (pure function)
+	virtual void Draw() = 0;//body cannot be defined/body definition ignored (pure function)
 	//virtual void Draw();
-	void Draw();
+	//void Draw();
 
 	// Try one of the two lines below at a time and inspect the output in detail
 	//virtual ~A();
@@ -33,7 +33,7 @@ A::~A()
 	cout << "An object of type A is destroyed " << endl;
 }
 
-class B : public A
+class B: public A
 {
 protected:
 	double b;
@@ -42,14 +42,14 @@ public:
 	{
 		cout << "An object of type B was created" << endl;
 	}
-	void Draw();
+	//void Draw();
 	~B();
 };
 
-void B::Draw()
+/*void B::Draw()
 {
 	cout << "An object of type B is drawn " << endl;
-}
+}*/
 
 B::~B()
 {
@@ -67,6 +67,9 @@ public:
 		cout << "An object of type C was created " << endl;
 	}
 	void Draw();
+	double getC() {
+		return c;
+	}
 	~C();
 };
 
@@ -87,7 +90,6 @@ int main()
 
 // Try one of these lines at a time and inspect the output
 	APtr0 = new C;
-
 	if(APtr0 == nullptr)
 	{
 		cout << "Memory allocation failed " << endl;
@@ -96,10 +98,12 @@ int main()
 
 	//Engine
 	APtr0->Draw();
+	//std::cout << "objectC data " << objectC.getC()  <<  " " << APtr0->getC() << std::endl;
 	if(APtr0 != nullptr)
 		delete APtr0;
 
 	//std::cin.get();
+
 
 	return 0;
 }
